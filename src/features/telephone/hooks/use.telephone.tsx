@@ -1,7 +1,6 @@
-import { Telephone } from "../models/phone.model";
 import * as ac from "../redux/actions.creator";
 import { AppDispatch, RootState } from "../../../core/store/store";
-import { useDispatch, useSelector } from "";
+import { useDispatch, useSelector } from "react-redux";
 
 export function useTelephone() {
   const { telephone } = useSelector((state: RootState) => state.telephone);
@@ -22,9 +21,12 @@ export function useTelephone() {
   const deleteNumber = () => {
     dispatch(ac.deleteDisplayTelephoneAction);
   };
-}
 
-return {
-  telephone,
-  handleHang,
-};
+  return {
+    telephone,
+    handleCall,
+    handleHang,
+    displayNumber,
+    deleteNumber,
+  };
+}
