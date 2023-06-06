@@ -3,7 +3,7 @@ import { AppDispatch, RootState } from "../../../core/store/store";
 import { useDispatch, useSelector } from "react-redux";
 
 export function useTelephone() {
-  const { telephone } = useSelector((state: RootState) => state.telephone);
+  const {} = useSelector((state: RootState) => state.telephone);
   const dispatch: AppDispatch = useDispatch();
 
   const handleHang = () => {

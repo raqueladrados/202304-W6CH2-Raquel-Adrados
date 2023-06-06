@@ -1,12 +1,13 @@
-import { Telephone } from "../models/phone.model";
 import { createSlice } from "@reduxjs/toolkit";
 
 export type TelephoneState = {
-  telephone: Telephone[];
+  isCalling: boolean;
+  telephoneNumbers: string;
 };
 
 const initialState: TelephoneState = {
-  telephone: [],
+  isCalling: false,
+  telephoneNumbers: "",
 };
 
 const sliceTelephone = createSlice({
