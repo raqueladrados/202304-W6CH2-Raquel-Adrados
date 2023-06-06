@@ -1,36 +1,30 @@
 import { Telephone } from "../models/phone.model";
-import { telephoneReduce, TelephoneState } from "../../../reducers/reducer";
-import { useReducer } from "react";
 import * as ac from "../redux/actions.creator";
+import { AppDispatch, RootState } from "../../../core/store/store";
+import { useDispatch, useSelector } from "";
 
-export function UseTelephone() {
-  const initialState: TelephoneState = {
-    telephone: {
-      isCalling: false,
-      display: "",
-    },
+export function useTelephone() {
+  const { telephone } = useSelector((state: RootState) => state.telephone);
+  const dispatch: AppDispatch = useDispatch();
+
+  const handleHang = () => {
+    dispatch(ac.updateCallingTelephoneAction(false));
   };
 
-  const [telephoneState, dispatch] = useReducer(telephoneReducer, initialState);
+  const handleCall = () => {
+    dispatch(ac.updateCallingTelephoneAction);
+  };
 
-  const hang = () => {
-    dispatch(ac.updateCallingAction({ display: "", isCalling: false }));
+  const displayNumber = () => {
+    dispatch(ac.updateDisplayTelephoneAction);
   };
-  const call = () => {
-    dispatch(ac.updateCallingAction({ display: "", isCalling: true }));
-  };
-  const displayNumber = (phoneNumber: string) => {
-    dispatch(
-      ac.updateDisplayTelephoneAction({ display: phoneNumber, isCalling: true })
-    );
-  };
-  const resetNumber = () => {};
 
-  return {
-    telephoneState,
-    hang,
-    call,
-    displayNumber,
-    resetNumber,
+  const deleteNumber = () => {
+    dispatch(ac.deleteDisplayTelephoneAction);
   };
 }
+
+return {
+  telephone,
+  handleHang,
+};
