@@ -1,4 +1,5 @@
 import { Telephone } from "../models/phone.model";
+import { createAction } from "@reduxjs/toolkit";
 import { actionTypes } from "./actions.types";
 
 type Keys = keyof typeof actionTypes;
@@ -8,28 +9,12 @@ export type TelephoneAction = {
   payload: string | boolean | Telephone;
 };
 
-export function updateDisplayTelephoneAction(
-  payload: Telephone
-): TelephoneAction {
-  return {
-    type: actionTypes.updateDisplay,
-    payload,
-  };
-}
-
-//no es necesario un payload en este caso ya que solo hay un display no varios
-//por lo que es obvio que si pedimos que se borre será ese y es innecesario un payload
-export function deleteDisplayAction(payload: Telephone): TelephoneAction {
-  return {
-    type: actionTypes.deleteDisplay,
-    payload,
-  };
-}
-
-// el paylaod en este caso tambien podría ser opcional porque le estamos pasando un boolean que va a ser A o B o bien tipar directamente el payload como boolean
-export function updateCallingAction(payload: Telephone): TelephoneAction {
-  return {
-    type: actionTypes.updateCalling,
-    payload,
-  };
-}
+export const updateDisplayTelephoneAction = createAction<string>(
+  actionTypes.updateDisplay
+);
+export const deleteDisplayTelephoneAction = createAction<Telephone>(
+  actionTypes.deleteDisplay
+);
+export const updateCallingTelephoneAction = createAction<boolean>(
+  actionTypes.updateCalling
+);
