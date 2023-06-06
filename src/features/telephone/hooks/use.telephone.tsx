@@ -1,7 +1,7 @@
 import { Telephone } from "../models/phone.model";
-import { telephoneReduce, TelephoneState } from "../reducers/reducer";
+import { telephoneReduce, TelephoneState } from "../../../reducers/reducer";
 import { useReducer } from "react";
-import * as ac from "../reducers/actions.creator";
+import * as ac from "../redux/actions.creator";
 
 export function UseTelephone() {
   const initialState: TelephoneState = {

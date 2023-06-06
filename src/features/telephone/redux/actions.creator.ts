@@ -1,5 +1,5 @@
 import { Telephone } from "../models/phone.model";
-import { actionTypes } from "../reducers/actions.types";
+import { actionTypes } from "./actions.types";
 
 type Keys = keyof typeof actionTypes;
 
